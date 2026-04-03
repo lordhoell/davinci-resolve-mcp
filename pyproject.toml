@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "davinci-resolve-mcp"
+version = "0.1.0"
+description = "MCP server exposing the full DaVinci Resolve scripting API for AI assistants"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+keywords = ["davinci-resolve", "mcp", "ai", "video-editing", "color-grading"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = [
+    "mcp[cli]>=1.0",
+]
+
+[project.scripts]
+davinci-resolve-mcp = "davinci_resolve_mcp.server:main"
+
+[project.optional-dependencies]
+dev = ["ruff", "mypy", "pytest"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
